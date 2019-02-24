@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <base href="/"> <!-- required for $locationProvider-->
+        <title>Hi from index.html</title>
+        <script src="./js.vendor/angular.min.js"></script>
+        <script src="./js.vendor/angular-route.min.js"></script>
+
+        <script src="./app/js/app.module.js"></script>
+        <script src="./app/js/app.main.js"></script>
+
+        <script src="./app/routing/routing.js"></script>
+
+        <script src="./app/directives/hello/hello.module.js"></script>
+        <script src="./app/directives/hello/hello-controller.js"></script>
+        <script src="./app/directives/hello/hello-directive.js"></script>
+
+        <script src="./app/directives/another/another.module.js"></script>
+        <script src="./app/directives/another/another-directive.js"></script>
+
+    </head>
+<!--
+
+-->
+    <body ng-controller="main">
+  
+        <div ng-controller="helloController">
+            <h1>Hi from index.html body inside div ng-controller helloController block</h1>
+            {{ 2 + 3}}
+        </div>
+
+        <hello-directive ng-repeat="hello in hellos"></hello-directive>
+        <another-directive ng-repeat="hello in hellos"><a ng-href="{{hello.id}}">{{hello.hello}}</a></another-directive>
+
+        <ul>
+            <li ng-repeat="hello in hellos"><a ng-href="{{hello.id}}">{{hello.hello}}</a></li>
+        </ul>
+
+        <div><a ng-href="/blog">Blog</a></div>
+
+        <!-- this is where routing stuff goes-->
+        <div ng-view></div>
+    </body>
+</html>
